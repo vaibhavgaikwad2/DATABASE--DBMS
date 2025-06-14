@@ -17,6 +17,17 @@ SHOW TABLES;                                 -- it return name of tables.
 THis is a multi-line comment.
 It can span multiple lines.
 */
+INSERT INTO student 
+(id, name, age)
+VALUES
+(4,"shyam",21),
+(5,"arjun",22);
+
+SELECT * FROM student;
+-- Practice que -- creating a database -- i already create this database in mysql command line 
+USE xyz;
+SELECT * FROM employee;
+
 
 
 
