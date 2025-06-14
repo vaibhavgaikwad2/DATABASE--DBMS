@@ -27,7 +27,9 @@ SELECT * FROM student;
 -- Practice que -- creating a database -- i already create this database in mysql command line 
 USE xyz;
 SELECT * FROM employee;
-
-
+-- There is only one primary key in whole table
+-- foreign key --> it is a column in a table that refers to the primary key of another table
+-- there can be multiple fks in single table
+-- it can stores duplicate and null values
 
 
