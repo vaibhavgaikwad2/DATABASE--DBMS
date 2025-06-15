@@ -32,4 +32,29 @@ SELECT * FROM employee;
 -- there can be multiple fks in single table
 -- it can stores duplicate and null values
 
+/*
+constraints
+SQL constraints are used to specify rules for data in a table
+NOT NULL -- columns cannot have a null value -- col1 int NOT NULL
+UNIQUE -- all values in column are different -- col2 INT UNIQUE
+PRIMARY KEY -- makes column unique and not null but used only for one 
 
+*/
+USE college;
+CREATE TABLE temp1(
+  id INT UNIQUE
+  -- name char NOT NULL 
+);
+INSERT INTO temp1 VALUES(101);
+INSERT INTO temp1 VALUES(101); -- it gives error because it is unique values
+
+SELECT * FROM temp1;
+
+CREATE TABLE temp(
+cust_id int,
+foreign key (cust_id) references temp1(id)
+);
+
+SELECT * FROM temp;
+
+INSERT INTO temp1 VALUES(102);
