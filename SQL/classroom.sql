@@ -147,6 +147,14 @@ ORDER BY col name ASC;
 */
 
 
+-- Table Related Queries
+-- 1) UPDATE --> To update existing rows
+UPDATE student
+SET grade = "O" 
+WHERE grade = "A";
+
+SET SQL_SAFE_UPDATES = 0; -- > it is used to disable safe mode in mysql. safe mode prevents accidentle changes in db. use 1 to enable
+
 
 
 
