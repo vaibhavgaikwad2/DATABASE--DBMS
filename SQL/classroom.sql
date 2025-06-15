@@ -23,7 +23,7 @@ VALUES
 (4,"shyam",21),
 (5,"arjun",22);
 
-SELECT * FROM student;
+SELECT * FROM student;   -- * means it returns data of all columns from student table
 -- Practice que -- creating a database -- i already create this database in mysql command line 
 USE xyz;
 SELECT * FROM employee;
@@ -71,7 +71,7 @@ INSERT INTO city VALUES(1,"Delhi",18);  -- gives error check constraint is voila
 INSERT INTO city VALUES(1,"Delhi",18);
 SELECT * FROM city;
 
--- creating sample college table 
+-- creating sample institute table 
 CREATE DATABASE institute;
 USE institute;
 CREATE TABLE student(
@@ -90,5 +90,10 @@ VALUES
 (104, "dhruv",96,"A","pune"),
 (105, "emanuel",12,"F","delhi"),
 (106, "farah",82,"B","noida");
-
 SELECT * FROM student;
+SELECT name, marks FROM student;  -- it shows only mentioned columns
+SELECT DISTINCT city FROM student; -- it returns unique values from that specific column
+-- WHERE Clause --> To define some conditions
+SELECT * FROM student WHERE marks > 80;
+SELECT * FROM student WHERE city = "mumbai";
+
