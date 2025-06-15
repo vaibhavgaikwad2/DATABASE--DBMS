@@ -96,4 +96,61 @@ SELECT DISTINCT city FROM student; -- it returns unique values from that specifi
 -- WHERE Clause --> To define some conditions
 SELECT * FROM student WHERE marks > 80;
 SELECT * FROM student WHERE city = "mumbai";
+SELECT * FROM student WHERE marks+10>100;
+SELECT * FROM student WHERE marks BETWEEN 80 AND 90;
+-- BETWEEN, AND, OR, IN, NOT operators are used to define condition with WHERE clause
+-- LIMIT Clause -- sets an upper limit on number of rows to be returned
+SELECT * FROM student LIMIT 3;
+-- ORDER BY clause -- TO sort in ascending(ASC) or descending oder (DESC)
+SELECT * FROM student ORDER BY city ASC;
+
+-- Aggregate Functions -- performs a calculation on set of values and returns a single values
+-- ex --> COUNT(), MAX(), MIN(), SUM(),
+SELECT MAX(marks) FROM student;
+SELECT MIN(marks) FROM student;
+SELECT COUNT(name) FROM student;
+
+-- GROUP BY clause --> Groups rows that have same values into summary rows
+-- it collects data from multiple records and groups the result by one or more column
+-- generally we use group by clause with some aggregate function 
+
+SELECT city, COUNT(rollno)
+FROM student
+GROUP BY city;
+
+SELECT city, AVG(marks)
+FROM student
+GROUP BY city
+ORDER BY city ASC;
+
+
+SELECT grade, COUNT(grade)
+FROM student 
+GROUP BY grade
+ORDER BY grade ASC;
+
+-- HAVING clause -- similar to WHERE i.e applies some condition on rows 
+-- USed when we want to apply conditions after grouping
+
+SELECT COUNT(name), city
+FROM student
+GROUP BY city
+HAVING max(marks) > 90;
+/*
+General order to write clauses
+SELECT column name
+FROM table name
+WHERE conditon
+GROUP BY col name
+HAVING condition
+ORDER BY col name ASC;
+*/
+
+
+
+
+
+
+
+
 
