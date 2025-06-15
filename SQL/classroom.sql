@@ -38,7 +38,8 @@ SQL constraints are used to specify rules for data in a table
 NOT NULL -- columns cannot have a null value -- col1 int NOT NULL
 UNIQUE -- all values in column are different -- col2 INT UNIQUE
 PRIMARY KEY -- makes column unique and not null but used only for one 
-
+DEFAULT -- sets default value of a column -- col_name INT DEFAULT value 
+CHECK -- it can limit the values allowed in columns
 */
 USE college;
 CREATE TABLE temp1(
@@ -47,14 +48,47 @@ CREATE TABLE temp1(
 );
 INSERT INTO temp1 VALUES(101);
 INSERT INTO temp1 VALUES(101); -- it gives error because it is unique values
-
 SELECT * FROM temp1;
-
 CREATE TABLE temp(
 cust_id int,
 foreign key (cust_id) references temp1(id)
 );
-
 SELECT * FROM temp;
-
 INSERT INTO temp1 VALUES(102);
+CREATE TABLE emp(
+salary INT DEFAULT 25000
+);
+SELECT * FROM emp;
+SHOW TABLES;
+
+CREATE TABLE city (
+	id INT PRIMARY KEY,
+    city VARCHAR(50),
+    age INT,
+    CONSTRAINT age_check CHECK (age >=18 AND city ="Delhi")
+);
+INSERT INTO city VALUES(1,"Delhi",18);  -- gives error check constraint is voilated
+INSERT INTO city VALUES(1,"Delhi",18);
+SELECT * FROM city;
+
+-- creating sample college table 
+CREATE DATABASE institute;
+USE institute;
+CREATE TABLE student(
+	rollno INT PRIMARY key,
+    name VARCHAR(50),
+    marks INT NOT NULL,
+    grade VARCHAR(1),
+    city VARCHAR(20)
+);
+INSERT INTO student
+(rollno,name,marks,grade,city)
+VALUES
+(101, "anil",78,"C","pune"),
+(102, "bhumika",93,"A","mumbai"),
+(103, "chetan",85,"B","mumbai"),
+(104, "dhruv",96,"A","pune"),
+(105, "emanuel",12,"F","delhi"),
+(106, "farah",82,"B","noida");
+
+SELECT * FROM student;
