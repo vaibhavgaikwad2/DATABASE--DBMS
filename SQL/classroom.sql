@@ -202,7 +202,127 @@ SELECT * FROM dept;
   UPDATE dept 
   SET id =103
   WHERE id =102;
-  
+
+
+-- 3) ALTER -- to change the schema (design)
+/*
+
+1)ADD Column
+ALTER TABLE table_name
+ADD COLUMN col_name
+
+2)DROP Column
+ALTER TABLE table_name 
+DROP Column name
+
+3)RENAME Table
+ALTER TABLE table_name
+RENAME TO new_table_name
+
+4)CHANGE Column
+ALTER TABLE table_name 
+CHANGE COLUMN old_name new_name new_dtype new_constraints;
+
+5)MODIFY Column(modify dtype/constraints)
+ALTER TABLE table_name
+MODIFY col_name newdtype new_constraint
+
+6) Truncate -- to delete table data it only deletes table data do not removes whole table like drop
+TRUNCATE TABLE table_name;
+*/
+USE institute;
+ALTER TABLE student
+ADD COLUMN age INT;
+
+SELECT * FROM student;
+
+ALTER TABLE student
+DROP COLUMN age;
+
+ALTER TABLE Student
+RENAME TO student;
+
+
+-- Joins in SQL 
+-- > join is used to combine rows from twp or more tables based on a related column between them
+/*
+Types
+1) Inner join -- if we want common data from two tables we use innwe join
+			 Returns records that have matching values in both tables
+             syntax -- > SELECT column(s)
+						 FROM tableA
+                         INNER JOIN tableB
+                         ON tableA.col_name = tableB.col_name;
+             
+             
+2) outer join-->
+	(1)Left join --> Returns all records from the left table and matched records from the right table
+					 SELECT columns
+                     FROM tableA
+                     LEFT JOIN tableB
+                     ON tableA.col_name = tableB.col_name;
+				 
+    (2)Right join --> 
+    (3)Full join --> Returns all records when there is a match in either left or right table
+					 SELECT * FROM table name as a
+                     LEFT JOIN table name as b
+                     ON a.col_name=b.col_name
+                     UNION
+                     SELECT * FROM table name as a
+                     RIGHT JOIN table name as begi
+                     ON a.col_name=b.col_name;
+*/
+
+SELECT * FROM student;
+SELECT * FROM teacher;
+select * from dept;
+
+SELECT *
+FROM student as s
+INNER JOIN dept as d
+ON s.rollno = d.id;
+
+SELECT * 
+FROM student
+
+SELECT *
+FROM student as s
+LEFT JOIN dept as d
+ON s.rollno = d.id;
+
+select * from student;
+
+SELECT *
+FROM student as s
+RIGHT JOIN dept as d
+ON s.rollno = d.id;
+
+SELECT * FROM student as s
+LEFT JOIN dept as d
+ON s.rollno=d.id
+UNION
+SELECT * FROM student as s
+RIGHT JOIN dept as d
+ON s.rollno=d.id;
+
+-- LEFT Exclusive Join
+SELECT * FROM student AS a
+LEFT JOIN dept as d
+ON a.rollno = d.id
+WHERE d.id IS NULL;
+
+
+-- same for right exclusive join -- means right col - common data
+
+-- self join -- it is regular join but the table is joined with itself
+
+
+
+
+
+
+
+
 
 
 
