@@ -315,6 +315,46 @@ WHERE d.id IS NULL;
 -- same for right exclusive join -- means right col - common data
 
 -- self join -- it is regular join but the table is joined with itself
+-- refer pdf
+
+-- UNION --> Used to combine the result set of two or more select statements
+
+
+-- sql subqueries --> nested query --> query inside query
+SELECT name, marks
+FROM student
+WHERE marks > (SELECT AVG(marks) from student);
+
+
+-- Mysql views --> a view is virtual table based on the result set of an sql statement
+
+CREATE VIEW view1 as 
+select rollno, name from student;
+
+SELECT * FROM view1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
