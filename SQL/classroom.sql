@@ -153,9 +153,56 @@ UPDATE student
 SET grade = "O" 
 WHERE grade = "A";
 
+UPDATE student 
+SET marks = marks + 1;
+
 SET SQL_SAFE_UPDATES = 0; -- > it is used to disable safe mode in mysql. safe mode prevents accidentle changes in db. use 1 to enable
 
+-- 2) DELETE --> TO delete existing rows 
 
+DELETE FROM student 
+WHERE marks < 33;
+
+-- Revisiting foreign key
+CREATE TABLE dept(
+	id INT PRIMARY KEY,  -- parent table
+    name VARCHAR(50));
+    
+CREATE TABLE teacher(
+	id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES dept(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE);
+
+-- Cascading for fk -- change in on db it should reflect in another db
+/*
+On DELETE cascade--> When we create a fk using this option it deletes the referencing rows in the
+child table when the referenced row is deleted the parent table which has a primary key
+
+ON UPDATE cascade--> When we create a fk using UPDATE CASCADE the referencing rows are updated inthe child table when the referenced 
+row is is updated in the parent table which has a primary key
+*/
+
+INSERT INTO dept
+VALUES 
+(101,"cs"),
+(102,"IT");
+
+SELECT * FROM dept;
+ 
+ INSERT INTO teacher
+ VALUES 
+ (101, "adam",101),
+ (102,"eve",102);
+ SELECT * FROM teacher;
+  
+  
+  UPDATE dept 
+  SET id =103
+  WHERE id =102;
+  
 
 
 
